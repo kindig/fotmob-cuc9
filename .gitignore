@@ -1,0 +1,13 @@
+# JetBrains
+/.idea/
+/.idea/misc.xml
+/.idea/modules.xml
+
+# Node
+/node_modules/
+
+#
+package-lock.json
+
+# Target
+/target/
