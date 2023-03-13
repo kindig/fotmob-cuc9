@@ -1,0 +1,15 @@
+{
+  "name": "fotmob-cuc9",
+  "version": "1.0.0",
+  "description": "CucumberJS Code Exercise",
+  "author": "Dave Kindig",
+  "license": "ISC",
+  "dependencies": {
+    "@cucumber/cucumber": "^9.0.0",
+    "selenium-webdriver": "^4.8.1",
+    "chromedriver": "~110.0.0"
+  },
+  "scripts": {
+    "test": "cucumber-js"
+  }
+}
