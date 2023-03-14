@@ -4,10 +4,10 @@ const {Given, When, Then, setDefaultTimeout} = require('@cucumber/cucumber');
 setDefaultTimeout(30 * 1000);
 const assert = require('assert');
 let { webDriver, Builder, By, until} = require('selenium-webdriver');
+
+// Required to run even though they are not explicitly used. Not sure why...
 const chrome = require('selenium-webdriver/chrome');
 const chromedriver = require('chromedriver');
-// const messages = require("@cucumber/messages");
-// const isAbove  = require("chai").assert;
 
 let points_match = false;
 let teams_match = false;
@@ -33,10 +33,14 @@ async function click_hidden_element(element) {
 }
 
 Given(/^User goes to https:\/\/fotmob\.com$/, async function () {
+    /*
+     * @fotmob tests
+     *
+     * Open the browser
+     */
     webDriver = new Builder().forBrowser("chrome").build();
     try {
         // Go to the fotmob.com website
-
         await webDriver.get("https://fotmob.com");
         await webDriver.manage().window().maximize();
 
@@ -46,8 +50,15 @@ Given(/^User goes to https:\/\/fotmob\.com$/, async function () {
 });
 
 When('User selects the Premier League', async function () {
+
+    /*
+     * fotmob-table test
+     *
+     * Click on the Premier League favorite
+     */
     try {
 
+        // Go to the Premier League Overview. The league table is shown here.
         let pl_link_path = "/leagues/47/overview/premier-league";
         let pl_xpath = "//a[@href='" + pl_link_path + "']";
         let xpath = By.xpath(pl_xpath);
@@ -56,11 +67,13 @@ When('User selects the Premier League', async function () {
         // Received Unable to click on element at (460, 316) hijinx
         await click_hidden_element(linkElement);
 
-        //*[@id="__next"]/main/section/section/div/section/section/div/div/h3
+        // Make sure the page has loaded
         let prem_title = "//*[@id='__next']/main/section/div/section/header/span[2]";
         await webDriver.wait(until.elementLocated(By.xpath(prem_title)), 10000);
         let prem_element = webDriver.findElement(By.xpath(prem_title));
         let pl_name = await prem_element.getAttribute("innerHTML");
+
+        // Assert to the test that it is where it should be
         assert.deepEqual("Premier League", pl_name);
 
     } catch (ex) {
@@ -70,7 +83,13 @@ When('User selects the Premier League', async function () {
 });
 
 When('User selects a league', async function (leagueTable) {
+    /*
+     * fotmob-div test
+     *
+     * Select the given league from the league favorites list
+     */
 
+    // Pass in a dataTable of a league.
     let league_list  = leagueTable.raw();
 
     try {
@@ -100,6 +119,11 @@ When('User selects a league', async function (leagueTable) {
 });
 
 When('User Clicks on Matches', async function () {
+    /*
+     * fotmob-div test
+     *
+     * Once on the league overview page, click the matches page
+     */
 
     try {
         let match_link = "/leagues/54/matches/" + league_name;
@@ -114,6 +138,12 @@ When('User Clicks on Matches', async function () {
 });
 
 When('User Clicks on By Round', async function () {
+    /*
+     * fotmob-div
+     *
+     * Select the By Round option
+     */
+
     try {
         // This avoids searching each div...
         let xpath_str = "//button[contains(text(), 'by round')]"
@@ -131,6 +161,12 @@ When('User Clicks on By Round', async function () {
 });
 
 When('User Clicks on the Round dropdown for round', async function (dataTable) {
+    /*
+    * fotmob-div
+    *
+    * Select the given round from the dropdown option list
+    */
+
     try {
         let round_select_xpath = By.xpath("//select");
         let round_element = await webDriver.findElement(round_select_xpath);
@@ -148,6 +184,12 @@ When('User Clicks on the Round dropdown for round', async function (dataTable) {
 });
 
 Then('Report the schedule', async function () {
+    /*
+    * fotmob-div
+    *
+    * Report the schedule to the console
+    */
+
     await match_day_option.click();
     let di_xpath = By.xpath("//div[@data-index=" + (parseInt(match_day_number) - 1).toString() + "]");
     await webDriver.wait(until.elementLocated(di_xpath), 10000);
@@ -183,6 +225,11 @@ Then('Report the schedule', async function () {
 });
 
 When('User examines a team', async function(dataTable) {
+    /*
+    * fotmob-table
+    *
+    * Click on the team provided by the datatable array
+    */
 
     let team_list  = dataTable.raw();
 
@@ -209,6 +256,8 @@ When('User examines a team', async function(dataTable) {
             let xpath = By.xpath("//*[text()[contains(., '" + test_team + "')]]");
             let the_team = await standings_table.findElement(xpath);
             let team_name_el = await the_team.findElement(By.xpath("//*/parent::tr/td/.."));
+
+            // Aligns with headers. Which will be checked in a later stage.
             let values = await team_name_el.findElements(By.xpath(".//td"));
 
             let team_name = await the_team.getAttribute("innerHTML");
@@ -247,6 +296,7 @@ When('User examines a team', async function(dataTable) {
                 }
             }
 
+            // Set the global booleans to assert truth state in last test step before closing the browser
             if (plus - minus === goal_diff) {
                 goal_diff_matches = true;
             }
@@ -267,6 +317,11 @@ When('User examines a team', async function(dataTable) {
 });
 
 Then('the teams points are correct', function() {
+    /*
+     * fotmob-table
+     *
+     * Validate the table results are true
+     */
 
     assert(points_match);
     assert(played_match);
@@ -275,6 +330,12 @@ Then('the teams points are correct', function() {
 });
 
 Then('close the browser', function() {
+    /*
+     * @fotmob
+     *
+     * Close the browser
+     */
+
     console.log("Closing the Browser");
     webDriver.close();
 });
