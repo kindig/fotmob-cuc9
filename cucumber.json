@@ -1,0 +1,15 @@
+{
+    "default": {
+        "require": [
+            "./step_definitions/*.js"
+        ],
+        "features": [
+            "fotmob-div.feature",
+            "fotmob-table.feature"
+
+        ],
+        "strict": true,
+        "format": ["html:report/report.html"]
+    }
+}
+

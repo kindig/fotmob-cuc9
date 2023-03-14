@@ -5,7 +5,9 @@
   "author": "Dave Kindig",
   "license": "ISC",
   "dependencies": {
+    "chai": "^4.3.7",
     "@cucumber/cucumber": "^9.0.0",
+    "@cucumber/messages": "^21.0.1",
     "selenium-webdriver": "^4.8.1",
     "chromedriver": "~110.0.0",
     "@cucumber/html-formatter": "^20.2.1"
