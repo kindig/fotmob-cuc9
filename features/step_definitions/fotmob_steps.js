@@ -4,8 +4,8 @@ const {Given, When, Then, setDefaultTimeout} = require('@cucumber/cucumber');
 setDefaultTimeout(30 * 1000);
 const assert = require('assert');
 let { webDriver, Builder, By, until} = require('selenium-webdriver');
-// const chrome = require('selenium-webdriver/chrome');
-// const chromedriver = require('chromedriver');
+const chrome = require('selenium-webdriver/chrome');
+const chromedriver = require('chromedriver');
 // const messages = require("@cucumber/messages");
 // const isAbove  = require("chai").assert;
 

@@ -13,6 +13,6 @@
     "@cucumber/html-formatter": "^20.2.1"
   },
   "scripts": {
-    "test": "cucumber-js"
+    "test:fotmob": "cucumber-js features/fotmob-div.feature features/fotmob-table.feature -r features/step_definitions -f html:report/fotmob.html"
   }
 }
