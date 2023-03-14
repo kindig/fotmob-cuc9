@@ -1,10 +1,11 @@
 # JetBrains
 /.idea/
-/.idea/misc.xml
-/.idea/modules.xml
+/.idea/*.xml
+
 
 # Node
 /node_modules/
 
 #
 package-lock.json
+
