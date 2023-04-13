@@ -9,8 +9,8 @@
     ],
     "strict": true,
     "format": [
-      "html:report/fotmob-table.html",
-      "json:report/fotmob-div.json"
+      "html:report/fotmob.html",
+      "json:report/fotmobjson"
     ]
   }
 }

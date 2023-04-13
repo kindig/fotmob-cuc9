@@ -1,0 +1,254 @@
+[
+  {
+    "description": "  Select the Bundesliga and show the schedule for a given round",
+    "elements": [
+      {
+        "description": "",
+        "id": "verify-schedule;show-matches-for-a-given-round",
+        "keyword": "Scenario",
+        "line": 5,
+        "name": "Show Matches for a given round",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 6,
+            "name": "User goes to https://fotmob.com",
+            "match": {
+              "location": "features\\step_definitions\\fotmob_steps.js:35"
+            },
+            "result": {
+              "status": "failed",
+              "duration": 30122934499,
+              "error_message": "Error: function timed out, ensure the promise resolves within 30000 milliseconds\n    at Timeout.<anonymous> (C:\\Users\\kindi\\temp\\fotmob-cuc9\\node_modules\\@cucumber\\cucumber\\lib\\time.js:54:20)\n    at listOnTimeout (node:internal/timers:568:17)\n    at process.processTimers (node:internal/timers:511:7)"
+            }
+          },
+          {
+            "arguments": [
+              {
+                "rows": [
+                  {
+                    "cells": [
+                      "Bundesliga"
+                    ]
+                  }
+                ]
+              }
+            ],
+            "keyword": "When ",
+            "line": 7,
+            "name": "User selects a league",
+            "match": {
+              "location": "features\\step_definitions\\fotmob_steps.js:85"
+            },
+            "result": {
+              "status": "skipped",
+              "duration": 0
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 9,
+            "name": "User Clicks on Matches",
+            "match": {
+              "location": "features\\step_definitions\\fotmob_steps.js:121"
+            },
+            "result": {
+              "status": "skipped",
+              "duration": 0
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 10,
+            "name": "User Clicks on By Round",
+            "match": {
+              "location": "features\\step_definitions\\fotmob_steps.js:140"
+            },
+            "result": {
+              "status": "skipped",
+              "duration": 0
+            }
+          },
+          {
+            "arguments": [
+              {
+                "rows": [
+                  {
+                    "cells": [
+                      "27"
+                    ]
+                  }
+                ]
+              }
+            ],
+            "keyword": "When ",
+            "line": 11,
+            "name": "User Clicks on the Round dropdown for round",
+            "match": {
+              "location": "features\\step_definitions\\fotmob_steps.js:163"
+            },
+            "result": {
+              "status": "skipped",
+              "duration": 0
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 13,
+            "name": "Report the schedule",
+            "match": {
+              "location": "features\\step_definitions\\fotmob_steps.js:186"
+            },
+            "result": {
+              "status": "skipped",
+              "duration": 0
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 14,
+            "name": "close the browser",
+            "match": {
+              "location": "features\\step_definitions\\fotmob_steps.js:332"
+            },
+            "result": {
+              "status": "skipped",
+              "duration": 0
+            }
+          }
+        ],
+        "tags": [
+          {
+            "name": "@fotmob",
+            "line": 4
+          }
+        ],
+        "type": "scenario"
+      }
+    ],
+    "id": "verify-schedule",
+    "line": 1,
+    "keyword": "Feature",
+    "name": "Verify Schedule",
+    "tags": [],
+    "uri": "features\\fotmob-div.feature"
+  },
+  {
+    "description": "  I want to make sure the games played, points and goal differential are calculated correctly",
+    "elements": [
+      {
+        "description": "",
+        "id": "check-team-standing-information;verify-points-are-correct",
+        "keyword": "Scenario",
+        "line": 5,
+        "name": "Verify Points are correct",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 6,
+            "name": "User goes to https://fotmob.com",
+            "match": {
+              "location": "features\\step_definitions\\fotmob_steps.js:35"
+            },
+            "result": {
+              "status": "failed",
+              "duration": 28298388899,
+              "error_message": "SessionNotCreatedError: session not created: This version of ChromeDriver only supports Chrome version 110\nCurrent browser version is 112.0.5615.49 with binary path C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe\n    at Object.throwDecodedError (C:\\Users\\kindi\\temp\\fotmob-cuc9\\node_modules\\selenium-webdriver\\lib\\error.js:524:15)\n    at parseHttpResponse (C:\\Users\\kindi\\temp\\fotmob-cuc9\\node_modules\\selenium-webdriver\\lib\\http.js:587:13)\n    at Executor.execute (C:\\Users\\kindi\\temp\\fotmob-cuc9\\node_modules\\selenium-webdriver\\lib\\http.js:515:28)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 7,
+            "name": "User selects the Premier League",
+            "match": {
+              "location": "features\\step_definitions\\fotmob_steps.js:52"
+            },
+            "result": {
+              "status": "skipped",
+              "duration": 0
+            }
+          },
+          {
+            "arguments": [
+              {
+                "rows": [
+                  {
+                    "cells": [
+                      "Arsenal"
+                    ]
+                  },
+                  {
+                    "cells": [
+                      "Brighton & Hove Albion"
+                    ]
+                  },
+                  {
+                    "cells": [
+                      "Manchester United"
+                    ]
+                  }
+                ]
+              }
+            ],
+            "keyword": "When ",
+            "line": 8,
+            "name": "User examines a team",
+            "match": {
+              "location": "features\\step_definitions\\fotmob_steps.js:227"
+            },
+            "result": {
+              "status": "skipped",
+              "duration": 0
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 12,
+            "name": "the teams points are correct",
+            "match": {
+              "location": "features\\step_definitions\\fotmob_steps.js:319"
+            },
+            "result": {
+              "status": "skipped",
+              "duration": 0
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 13,
+            "name": "close the browser",
+            "match": {
+              "location": "features\\step_definitions\\fotmob_steps.js:332"
+            },
+            "result": {
+              "status": "skipped",
+              "duration": 0
+            }
+          }
+        ],
+        "tags": [
+          {
+            "name": "@fotmob",
+            "line": 4
+          }
+        ],
+        "type": "scenario"
+      }
+    ],
+    "id": "check-team-standing-information",
+    "line": 1,
+    "keyword": "Feature",
+    "name": "Check Team standing information",
+    "tags": [],
+    "uri": "features\\fotmob-table.feature"
+  }
+]

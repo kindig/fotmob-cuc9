@@ -71,7 +71,7 @@ When('User selects the Premier League', async function () {
         let prem_title = "//*[@id='__next']/main/section/div/section/header/span[2]";
         await webDriver.wait(until.elementLocated(By.xpath(prem_title)), 10000);
         let prem_element = webDriver.findElement(By.xpath(prem_title));
-        let pl_name = await prem_element.getAttribute("innerHTML");
+        let pl_name = await prem_element.getAttribute("innerHTML").value;
 
         // Assert to the test that it is where it should be
         assert.deepEqual("Premier League", pl_name);
@@ -109,7 +109,7 @@ When('User selects a league', async function (leagueTable) {
             let league_title = "//*[@id='__next']/main/section/div/section/header/span[2]";
             await webDriver.wait(until.elementLocated(By.xpath(league_title)), 10000);
             let league_element = webDriver.findElement(By.xpath(league_title));
-            let league_innerhtml = await league_element.getAttribute("innerHTML");
+            let league_innerhtml = await league_element.getAttribute("innerHTML").value;
             assert.deepEqual(league_name, league_innerhtml.toLowerCase());
         }
     } catch (ex) {
@@ -199,7 +199,7 @@ Then('Report the schedule', async function () {
     let games = null;
 
     for (let ii in match_day_header) {
-        let day = await (match_day_header[ii]).getAttribute("innerHTML");
+        let day = await (match_day_header[ii]).getAttribute("innerHTML").value;
         let games_divs = By.xpath(".//following-sibling::div");
         games = await (match_day_header[ii]).findElements(games_divs);
         console.log("");
@@ -210,9 +210,9 @@ Then('Report the schedule', async function () {
             let team1_ele = await blah.findElement(By.xpath(".//a/span/span"));
             let team2_ele = await blah.findElement(By.xpath(".//a/span/span[2]"));
             let time_ele = await blah.findElement(By.xpath(".//a/span/div/span"));
-            let team1 = await team1_ele.getAttribute("innerHTML");
-            let team2 = await team2_ele.getAttribute("innerHTML");
-            let time = await time_ele.getAttribute("innerHTML");
+            let team1 = await team1_ele.getAttribute("innerHTML").value;
+            let team2 = await team2_ele.getAttribute("innerHTML").value;
+            let time = await time_ele.getAttribute("innerHTML").value;
             console.log(day + ": " + time + " -> " + team1 + " - " + team2);
 
         }
@@ -260,15 +260,15 @@ When('User examines a team', async function(dataTable) {
             // Aligns with headers. Which will be checked in a later stage.
             let values = await team_name_el.findElements(By.xpath(".//td"));
 
-            let team_name = await the_team.getAttribute("innerHTML");
+            let team_name = await the_team.getAttribute("innerHTML").value;
             team_name.replace(/&amp;/g,"&");
 
             for (let ii in headers) {
                 let stupidJSWEThing = headers[ii];
 
-                let head = await stupidJSWEThing.getAttribute("innerHTML");
+                let head = await stupidJSWEThing.getAttribute("innerHTML").value;
                 let stupidJSVal = values[ii];
-                let value = await stupidJSVal.getAttribute("innerHTML");
+                let value = await stupidJSVal.getAttribute("innerHTML").value;
                 switch(head) {
                     case "W":
                         wins = parseInt(value);
